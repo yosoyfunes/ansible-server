@@ -1,0 +1,27 @@
+---
+- name: Lab VMs
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Crear directorio .ssh
+      ansible.builtin.file:
+        path: .ssh
+        state: directory
+        mode: "0755"
+
+    - name: Generar un par de claves SSH
+      ansible.builtin.openssh_keypair:
+        path: .ssh/id_rsa
+        type: rsa
+        size: 2048
+        mode: "0600"
+      register: ssh_key
+
+    - name: Cambiar permisos del archivo de clave privada
+      ansible.builtin.file:
+        path: .ssh/id_rsa
+        mode: "0600"
+        owner: root
+        group: root
+      when: ssh_key is defined

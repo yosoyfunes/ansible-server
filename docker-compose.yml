@@ -1,0 +1,23 @@
+version: '3'
+services:
+	nodo1:
+    image: yosoyfunes/ansible-nodos:v1
+    container_name: nodo1
+    networks:
+      - ansible_network
+
+  nodo2:
+    image: yosoyfunes/ansible-nodos:v1
+    container_name: nodo2
+    networks:
+      - ansible_network
+
+  nodo3:
+    image: yosoyfunes/ansible-nodos:v1
+    container_name: nodo3
+    networks:
+      - ansible_network
+
+networks:
+  ansible_network:
+    external: true
