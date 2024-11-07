@@ -27,7 +27,7 @@ RUN useradd -m ansible \
     && echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Cambia al usuario ansible
-# USER ansible
+USER ansible
 
 # Ejecuta el contenedor en modo interactivo
 CMD ["bash"]
