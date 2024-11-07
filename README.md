@@ -58,3 +58,35 @@ docker run -ti --name ansible-server --network ansible_network -d -v $(pwd)/file
 ```
 docker exec -ti ansible-server bash
 ```
+
+## Correr un comando de Ansible
+
+```
+ansible -i inventory.ini all -m ping
+```
+
+### Respuesta esperada
+
+```
+nodo3 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+nodo1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+nodo2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+```
